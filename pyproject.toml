@@ -8,6 +8,8 @@ packages = [{include = "loja_fake_streaming"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"
+flask = "^2.2.2"
+gunicorn = "^20.1.0"
 
 
 [tool.poetry.dev-dependencies]
