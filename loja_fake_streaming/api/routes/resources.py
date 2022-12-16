@@ -5,7 +5,7 @@ from flask import Blueprint
 from flask import Response
 
 
-routes = Blueprint("webhook", __name__, url_prefix="/")
+routes = Blueprint("routes", __name__, url_prefix="/")
 
 
 @routes.route("/", methods=["GET"])
