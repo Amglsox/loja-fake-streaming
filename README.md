@@ -24,6 +24,8 @@ Para verificar qual versão do Docker-Compose que está instalada execute o coma
 $ docker-compose --version
 > docker-compose version 1.27.4, build 40524192
 ```
+## Arquitetura e Componentes utilizados
+![alt text](./images/arquitetura_fake.png)
 
 ## Subindo todos os recursos com um único comando
 O comando abaixo irá realizar todas as etapas para construção da solução.
