@@ -40,7 +40,7 @@ start-api: ## Start api
 
 .PHONY: build-api
 build-api: ## Build API
-	cp poetry.lock pyproject.toml ./loja_fake_streaming/api/ && cd ./loja_fake_streaming/api/ && docker build . -t loja-fake-api && rm -rf poetry.lock pyproject.toml
+	cp poetry.lock pyproject.toml ./loja_fake_streaming/api/ && cd ./loja_fake_streaming/api/ && docker build . -t loja-fake-api:latest && rm -rf poetry.lock pyproject.toml
 
 .PHONY: start-container-api
 start-container-api: ## Start API
@@ -67,8 +67,12 @@ start_druid: curl_druid unzip_druid up_druid
 
 .PHONY: start-superset
 start_superset: ##superset
-	git clone https://github.com/apache/superset.git && docker-compose -f ./superset/docker-compose-non-dev.yml up
+	git clone https://github.com/apache/superset.git && docker-compose -f ./superset/docker-compose-non-dev.yml up -d
 
 .PHONY: stop-superset
 stop_superset: ##superset
 	docker-compose -f ./superset/docker-compose-non-dev.yml down --remove-orphans && rm -rf ./superset
+
+
+.PHONY: deploy
+deploy: start_superset start-kafka build-api start-container-api start_druid

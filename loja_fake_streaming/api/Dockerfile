@@ -15,7 +15,7 @@ COPY poetry.lock pyproject.toml /code/
 # Project initialization:
 RUN poetry config virtualenvs.create false && poetry install --no-interaction --no-ansi --no-root
 
-ENV bootstrap_servers="172.28.0.3:29092"
+ENV bootstrap_servers="<placeholder>:29092"
 ENV topic_data="kafka-python-topic-person-official-2"
 
 # Copy our Flask app to the Docker image
