@@ -18,7 +18,7 @@ class Producer(KafkaConnection):
         """Summary line, max. 79 chars including period** Do something interesting."""
 
         producer = KafkaProducer(
-            bootstrap_servers=self.bootstrap_servers, value_serializer=lambda v: str(v).encode("utf-8")
+            bootstrap_servers=self.bootstrap_servers, value_serializer=lambda v: json.dumps(v).encode("utf-8")
         )
 
         valor = Producer.create_vendas()
@@ -61,4 +61,4 @@ class Producer(KafkaConnection):
             "pais": "Brasil",
         }
 
-        return json.dumps(person, ensure_ascii=False).encode("utf8")
+        return person

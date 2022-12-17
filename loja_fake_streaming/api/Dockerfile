@@ -3,7 +3,7 @@
 FROM python:3.11-slim-buster
 
 ENV POETRY_VERSION=1.2.2 \
-  PORT=8080
+  PORT=9090
 
 # Install poetry
 RUN pip install "poetry==$POETRY_VERSION"

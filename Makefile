@@ -54,7 +54,7 @@ build-api: ## Build API
 
 .PHONY: start-container-api
 start-container-api: ## Start API
-	docker run --name loja-fake --network kafka_default -d -p 8080:8080 loja-fake-api
+	docker run --name loja-fake --network kafka_default -d -p 9090:9090 loja-fake-api
 
 .PHONY: down-container-api
 down-container-api: ## Start API
@@ -70,7 +70,7 @@ unzip_druid: ##unzip druid
 
 .PHONY: up_druid
 up_druid: ##up-druid
-	./apache-druid-24.0.1/bin/start-micro-quickstart
+	./apache-druid-24.0.1/bin/start-single-server-medium
 
 .PHONY: start_druid
 start_druid: curl_druid unzip_druid up_druid
