@@ -18,7 +18,6 @@ install: ## Install the project dependencies and pre-commit using Poetry.
 	poetry install
 	poetry run pre-commit install --hook-type pre-commit --hook-type commit-msg --hook-type pre-push
 
-
 .PHONY: test
 test: ## Run tests
 	poetry run python -m pytest --cov=data_api_project --cov-report html
@@ -65,3 +64,11 @@ up_druid: ##up-druid
 
 .PHONY: start_druid
 start_druid: curl_druid unzip_druid up_druid
+
+.PHONY: start-superset
+start_superset: ##superset
+	git clone https://github.com/apache/superset.git && docker-compose -f ./superset/docker-compose-non-dev.yml up
+
+.PHONY: stop-superset
+stop_superset: ##superset
+	docker-compose -f ./superset/docker-compose-non-dev.yml down --remove-orphans && rm -rf ./superset
