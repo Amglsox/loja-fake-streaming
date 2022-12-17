@@ -27,15 +27,6 @@ test: ## Run tests
 update: ## Run update poetry
 	poetry update
 
-,PHONY: start-metabase
-start-metabase: ## Start Metabase
-	docker pull metabase/metabase:latest
-	docker run -d -p 3000:3000 --name metabase metabase/metabase
-
-,PHONY: stop-metabase
-stop-metabase: ## Start Metabase
-	docker stop metabase && docker rm metabase
-
 .PHONY: kafka-start
 start-kafka: ## Start Kafka
 	cd ./kafka && docker-compose up -d
