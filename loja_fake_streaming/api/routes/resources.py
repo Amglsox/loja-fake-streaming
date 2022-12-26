@@ -20,5 +20,5 @@ def healthcheck() -> Response:
 @routes.route("/shopping/create", methods=["GET", "POST"])
 def create_vendas() -> Response:
     logging.info("Start create venda")
-    Producer(os.environ["bootstrap_servers"], os.environ["topic_data"]).run()
-    return Response(json.dumps({"data": {"Status": "ok"}}), status=200, mimetype="application/json")
+    person = Producer(os.environ["bootstrap_servers"], os.environ["topic_data"]).run()
+    return Response(json.dumps({"data": {"Status": "ok", "person": person}}), status=200, mimetype="application/json")
